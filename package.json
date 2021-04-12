@@ -1,0 +1,23 @@
+{
+  "name": "protractor-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "conf.js",
+  "dependencies": {
+    "protractor": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vdemnyk/protractor-project.git"
+  },
+  "author": "vdemnyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vdemnyk/protractor-project/issues"
+  },
+  "homepage": "https://github.com/vdemnyk/protractor-project#readme"
+}
