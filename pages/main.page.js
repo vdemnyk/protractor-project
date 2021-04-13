@@ -1,9 +1,7 @@
 let baseElementLocator = by.css('#homeslider');
 let loginBtnLocator = by.css('.login');
 
-
 class MainPage {
-
     constructor() {
     }
 
@@ -28,4 +26,4 @@ class MainPage {
     }    
 }
 
-module.exports = new MainPage();
+module.exports = new MainPage;

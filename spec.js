@@ -1,34 +1,33 @@
+const MainPage = require('.//pages/main.page');
+const LoginPage = require('.//pages/login.page');
+const AccountPage = require('.//pages/account.page');
+
 describe('Login functionality:', function(){
   it('Successful login', async function(){
-    await browser.get(browser.params.appUrl);
-    await element(by.css('.login')).click();
-    await browser.wait(protractor.ExpectedConditions.urlContains('authentication'));
+    MainPage.open();
+    MainPage.waitForPageLoaded();
+    MainPage.navigateToLogin();
 
-    await element(by.css('#email')).sendKeys(browser.params.email);
-    await element(by.css('#passwd')).sendKeys(browser.params.password);
+    LoginPage.waitForPageLoaded();
+    LoginPage.typeEmail();
+    LoginPage.typePassword(browser.params.password);
+    LoginPage.navigateToAccount();
 
-    await element(by.css('#SubmitLogin')).click();
-    await browser.wait(protractor.ExpectedConditions.urlContains('my-account'));
-
-    await element(by.css('.logout')).click();
-    await browser.wait(protractor.ExpectedConditions.urlContains('authentication'));
+    AccountPage.waitForPageLoaded();
+    AccountPage.logout();
+    LoginPage.waitForPageLoaded();
   });
 
   it('Unsuccessful login', async function(){
-    await element(by.css('.login')).click();
-    await browser.wait(protractor.ExpectedConditions.urlContains('authentication'));
+    MainPage.open();
+    MainPage.waitForPageLoaded();
+    MainPage.navigateToLogin();
 
-    await element(by.css('#email')).sendKeys(browser.params.email);
-    await element(by.css('#passwd')).sendKeys(browser.params.wrongPassword);
+    LoginPage.waitForPageLoaded();
 
-    await element(by.css('#SubmitLogin')).click();
-    await browser.wait(protractor.ExpectedConditions.urlContains('authentication'));
-    await element(by.css('#center_column>.alert')).isPresent();
+    LoginPage.typeEmail();
+    LoginPage.typePassword(browser.params.wrongPassword);
+    LoginPage.navigateToAccount();
+    LoginPage.alertIsVisible();
   });
 });
-
-
-
-
-
-
