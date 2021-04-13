@@ -1,7 +1,7 @@
 let baseElementLocator = by.css('.info-account');
 let signoutFieldLocator = by.css('.logout');
 
-class AccountPage {
+class AccountPage { // todo <- exted web page and remove waitForPageLoaded
     constructor() {
     }
 
@@ -22,4 +22,4 @@ class AccountPage {
     }
 }
 
-module.exports = new AccountPage;
+module.exports = new AccountPage();

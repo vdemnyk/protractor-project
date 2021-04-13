@@ -1,29 +1,31 @@
+let WebPage = require("../base/webPage");
+
+let { WebButton } = require("../elemnets/button");
+
 let baseElementLocator = by.css('#homeslider');
 let loginBtnLocator = by.css('.login');
 
-class MainPage {
+
+class MainPage extends WebPage {
     constructor() {
+        super();
     }
 
     async open() {
-        await browser.get(browser.params.appUrl);
+        await super.open(browser.params.appUrl);
     }
 
     async navigateToLogin() {
         await this.getLoginBtnElement().click();
     }
 
-    async waitForPageLoaded() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 5000);
-    }
-
     getBaseElement() {
-        return element(baseElementLocator);
+        return element(baseElementLocator); // todo <- create a web view element class
     }
 
     getLoginBtnElement() {
-        return element(loginBtnLocator);
+        return new WebButton(element(loginBtnLocator), "Login Button");
     }    
 }
 
-module.exports = new MainPage;
+module.exports = new MainPage();

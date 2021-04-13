@@ -4,10 +4,14 @@ exports.config = {
     capabilities: {
         browserName: 'chrome'
     },
-    specs: ['spec.js'],
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 90000
+      },
+    specs: ['./spec/loginSpec.js'],
     onPrepare: function(){
         console.log('Start of tests execution');
         browser.waitForAngularEnabled(false);
+        browser.manage().timeouts().implicitlyWait(4000);
     },
     params: {
         appUrl: 'http://automationpractice.com/index.php',
