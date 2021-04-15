@@ -1,6 +1,7 @@
 let WebPage = require("../base/webPage");
 
 let { WebButton } = require("../elemnets/button");
+let { WebView } = require("../elemnets/view");
 
 let baseElementLocator = by.css('#homeslider');
 let loginBtnLocator = by.css('.login');
@@ -13,6 +14,10 @@ class MainPage extends WebPage {
 
     async open() {
         await super.open(browser.params.appUrl);
+    }
+
+    async waitForPageLoaded() {
+        await super.waitForPageLoaded();
     }
 
     async navigateToLogin() {

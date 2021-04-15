@@ -1,12 +1,18 @@
+let WebPage = require("../base/webPage");
+
+let { WebButton } = require("../elemnets/button");
+let { WebView } = require("../elemnets/view");
+
 let baseElementLocator = by.css('.info-account');
 let signoutFieldLocator = by.css('.logout');
 
-class AccountPage { // todo <- exted web page and remove waitForPageLoaded
+class AccountPage extends WebPage { // todo <- exted web page and remove waitForPageLoaded
     constructor() {
+        super();
     }
 
     async waitForPageLoaded() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 5000);
+        await super.waitForPageLoaded();
     }
 
     async logout() {
@@ -18,7 +24,7 @@ class AccountPage { // todo <- exted web page and remove waitForPageLoaded
     }
 
     getSignoutFieldLocator() {
-        return element(signoutFieldLocator);
+        return new WebButton(element(signoutFieldLocator), "Sign out Button");
     }
 }
 

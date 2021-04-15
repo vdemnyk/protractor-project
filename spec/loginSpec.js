@@ -9,7 +9,7 @@ describe('Login functionality:', function(){
     await mainPage.navigateToLogin();
 
     await loginPage.waitForPageLoaded();
-    await loginPage.typeEmail(); // todo < - add email value
+    await loginPage.typeEmail(browser.params.email); // todo < - add email value
     await loginPage.typePassword(browser.params.password);
     await loginPage.navigateToAccount();
 
@@ -19,13 +19,12 @@ describe('Login functionality:', function(){
   });
 
   it('Unsuccessful login', async function(){
-    await mainPage.open();
+    await mainPage.open(browser.params.appUrl);
     await mainPage.waitForPageLoaded();
     await mainPage.navigateToLogin();
 
     await loginPage.waitForPageLoaded();
-
-    await loginPage.typeEmail(); // todo < - add email value
+    await loginPage.typeEmail(browser.params.email); // todo < - add email value
     await loginPage.typePassword(browser.params.wrongPassword);
     await loginPage.navigateToAccount();
     await loginPage.alertIsVisible();  // todo < - add expect to check if it true

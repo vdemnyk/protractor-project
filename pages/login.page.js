@@ -1,23 +1,31 @@
+let WebPage = require("../base/webPage");
+
+let { WebButton } = require("../elemnets/button");
+let { WebTextInput } = require("../elemnets/textInput");
+let { WebView } = require("../elemnets/view");
+
 let baseElementLocator = by.css('#login_form');
 let emailFieldLocator = by.css('#email');
 let passwordFieldLocator = by.css('#passwd');
 let signinBtnLocator = by.css('#SubmitLogin');
 let alertLocator = by.css('#center_column>.alert');
 
-class LoginPage { // todo <- exted web page and remove waitForPageLoaded
+
+class LoginPage extends WebPage { // todo <- exted web page and remove waitForPageLoaded
     constructor() {
+        super();
     }
 
     async waitForPageLoaded() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 5000);
+        await super.waitForPageLoaded();
     }
 
-    async typeEmail(){
-        await this.getEmailFieldElement().sendKeys(browser.params.email);
+    async typeEmail(value){
+        await this.getEmailFieldElement().sendKeys(value);
     }
 
-    async typePassword(password){
-        await this.getPasswordFieldElement().sendKeys(password);
+    async typePassword(value){
+        await this.getPasswordFieldElement().sendKeys(value);
     }
 
     async navigateToAccount() {
@@ -25,7 +33,7 @@ class LoginPage { // todo <- exted web page and remove waitForPageLoaded
     }
 
     async alertIsVisible() {
-        await this.getAlertBlock().isDisplayed();
+        expect(await this.getAlertBlock().isDisplayed()).toBe(true); 
     }
 
     getBaseElement() { // todo <- create a web view element class
@@ -33,15 +41,15 @@ class LoginPage { // todo <- exted web page and remove waitForPageLoaded
     }
     
     getEmailFieldElement() { // todo <- create a text input element class
-        return element(emailFieldLocator);
+        return new WebTextInput(element(emailFieldLocator), "Email address field");
     }
 
     getPasswordFieldElement() {// todo <- create a text input element class 
-        return element(passwordFieldLocator);
+        return new WebTextInput(element(passwordFieldLocator), "Password field");
     }
 
     getSigninBtnElement() {// todo <- link with button element class
-        return element(signinBtnLocator);
+        return new WebButton(element(signinBtnLocator), "Sign in Button");
     }   
 
     getAlertBlock() {// todo <- create a web view element class
