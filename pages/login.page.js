@@ -11,7 +11,7 @@ let signinBtnLocator = by.css('#SubmitLogin');
 let alertLocator = by.css('#center_column>.alert');
 
 
-class LoginPage extends WebPage { // todo <- exted web page and remove waitForPageLoaded
+class LoginPage extends WebPage {
     constructor() {
         super();
     }
@@ -36,23 +36,23 @@ class LoginPage extends WebPage { // todo <- exted web page and remove waitForPa
         return await this.getAlertBlock().getText();
     }
 
-    getBaseElement() { // todo <- create a web view element class
-        return new WebView(element(baseElementLocator));
+    getBaseElement() {
+        return new WebView(element(baseElementLocator), "LoginPage Base");
     }
     
-    getEmailFieldElement() { // todo <- create a text input element class
+    getEmailFieldElement() {
         return new WebTextInput(element(emailFieldLocator), "Email address field");
     }
 
-    getPasswordFieldElement() {// todo <- create a text input element class 
+    getPasswordFieldElement() {
         return new WebTextInput(element(passwordFieldLocator), "Password field");
     }
 
-    getSigninBtnElement() {// todo <- link with button element class
+    getSigninBtnElement() {
         return new WebButton(element(signinBtnLocator), "Sign in Button");
     }   
 
-    getAlertBlock() {// todo <- create a web view element class
+    getAlertBlock() {
         return new WebView(element(alertLocator), "Alert element");
     }
 }

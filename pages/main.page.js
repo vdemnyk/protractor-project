@@ -21,7 +21,7 @@ class MainPage extends WebPage {
     }
 
     getBaseElement() {
-        return new WebView(element(baseElementLocator)); // todo <- create a web view element class
+        return new WebView(element(baseElementLocator), "MainPage Base");
     }
 
     getLoginBtnElement() {

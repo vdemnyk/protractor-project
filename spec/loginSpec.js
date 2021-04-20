@@ -9,7 +9,7 @@ describe('Login functionality:', function(){
     await mainPage.navigateToLogin();
 
     await loginPage.waitForPageLoaded();
-    await loginPage.typeEmail(browser.params.email); // todo < - add email value
+    await loginPage.typeEmail(browser.params.email);
     await loginPage.typePassword(browser.params.password);
     await loginPage.navigateToAccount();
 
@@ -24,10 +24,10 @@ describe('Login functionality:', function(){
     await mainPage.navigateToLogin();
 
     await loginPage.waitForPageLoaded();
-    await loginPage.typeEmail(browser.params.email); // todo < - add email value
+    await loginPage.typeEmail(browser.params.email);
     await loginPage.typePassword(browser.params.wrongPassword);
     await loginPage.navigateToAccount();
-    expect(await loginPage.alertIsVisible()).toBe(true);  // todo < - add expect to check if it true
+    expect(await loginPage.alertIsVisible()).toBe(true);
     expect(await loginPage.checkAlertText()).toEqual('There is 1 error\nAuthentication failed.');
   });
 });

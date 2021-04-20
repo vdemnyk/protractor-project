@@ -6,7 +6,7 @@ let { WebView } = require("../elemnets/view");
 let baseElementLocator = by.css('.info-account');
 let signoutFieldLocator = by.css('.logout');
 
-class AccountPage extends WebPage { // todo <- exted web page and remove waitForPageLoaded
+class AccountPage extends WebPage {
     constructor() {
         super();
     }
@@ -16,7 +16,7 @@ class AccountPage extends WebPage { // todo <- exted web page and remove waitFor
     }
 
     getBaseElement() {
-        return new WebView(element(baseElementLocator));
+        return new WebView(element(baseElementLocator), "AccountPage Base");
     }
 
     getSignoutFieldLocator() {
