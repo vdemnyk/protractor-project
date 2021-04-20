@@ -7,7 +7,7 @@ class WebPage {
     }
 
     async waitForPageLoaded() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 10000);
+        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement().protractorElement), 10000);
     }
 
 }

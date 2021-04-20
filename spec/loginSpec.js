@@ -19,7 +19,7 @@ describe('Login functionality:', function(){
   });
 
   it('Unsuccessful login', async function(){
-    await mainPage.open(browser.params.appUrl);
+    await mainPage.open();
     await mainPage.waitForPageLoaded();
     await mainPage.navigateToLogin();
 
@@ -27,6 +27,7 @@ describe('Login functionality:', function(){
     await loginPage.typeEmail(browser.params.email); // todo < - add email value
     await loginPage.typePassword(browser.params.wrongPassword);
     await loginPage.navigateToAccount();
-    await loginPage.alertIsVisible();  // todo < - add expect to check if it true
+    expect(await loginPage.alertIsVisible()).toBe(true);  // todo < - add expect to check if it true
+    expect(await loginPage.checkAlertText()).toEqual('There is 1 error\nAuthentication failed.');
   });
 });

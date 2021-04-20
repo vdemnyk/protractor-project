@@ -11,16 +11,12 @@ class AccountPage extends WebPage { // todo <- exted web page and remove waitFor
         super();
     }
 
-    async waitForPageLoaded() {
-        await super.waitForPageLoaded();
-    }
-
     async logout() {
         await this.getSignoutFieldLocator().click();
     }
 
     getBaseElement() {
-        return element(baseElementLocator);
+        return new WebView(element(baseElementLocator));
     }
 
     getSignoutFieldLocator() {

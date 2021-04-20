@@ -16,10 +16,6 @@ class LoginPage extends WebPage { // todo <- exted web page and remove waitForPa
         super();
     }
 
-    async waitForPageLoaded() {
-        await super.waitForPageLoaded();
-    }
-
     async typeEmail(value){
         await this.getEmailFieldElement().sendKeys(value);
     }
@@ -33,11 +29,15 @@ class LoginPage extends WebPage { // todo <- exted web page and remove waitForPa
     }
 
     async alertIsVisible() {
-        expect(await this.getAlertBlock().isDisplayed()).toBe(true); 
+        return await this.getAlertBlock().isDisplayed(); 
+    }
+    
+    async checkAlertText() {
+        return await this.getAlertBlock().getText();
     }
 
     getBaseElement() { // todo <- create a web view element class
-        return element(baseElementLocator);
+        return new WebView(element(baseElementLocator));
     }
     
     getEmailFieldElement() { // todo <- create a text input element class
@@ -53,7 +53,7 @@ class LoginPage extends WebPage { // todo <- exted web page and remove waitForPa
     }   
 
     getAlertBlock() {// todo <- create a web view element class
-        return element(alertLocator);
+        return new WebView(element(alertLocator), "Alert element");
     }
 }
 

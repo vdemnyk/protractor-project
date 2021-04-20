@@ -16,16 +16,12 @@ class MainPage extends WebPage {
         await super.open(browser.params.appUrl);
     }
 
-    async waitForPageLoaded() {
-        await super.waitForPageLoaded();
-    }
-
     async navigateToLogin() {
         await this.getLoginBtnElement().click();
     }
 
     getBaseElement() {
-        return element(baseElementLocator); // todo <- create a web view element class
+        return new WebView(element(baseElementLocator)); // todo <- create a web view element class
     }
 
     getLoginBtnElement() {
