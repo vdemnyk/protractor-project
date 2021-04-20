@@ -16,6 +16,8 @@ class LoginPage extends WebPage {
         super();
     }
 
+    // todo login method, like login(email, password), add Allure step
+
     async typeEmail(value){
         await this.getEmailFieldElement().sendKeys(value);
     }
@@ -24,7 +26,7 @@ class LoginPage extends WebPage {
         await this.getPasswordFieldElement().sendKeys(value);
     }
 
-    async navigateToAccount() {
+    async navigateToAccount() {// todo change to clickSignIn()
         await this.getSigninBtnElement().click();
     }
 
