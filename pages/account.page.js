@@ -12,7 +12,9 @@ class AccountPage extends WebPage {
     }
 
     async logout() {
-        await this.getSignoutFieldLocator().click();
+        await allure.createStep('Click "Sign out" button', async () => {
+            await this.getSignoutFieldLocator().click();
+        })();
     }
 
     getBaseElement() {

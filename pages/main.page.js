@@ -13,11 +13,15 @@ class MainPage extends WebPage {
     }
 
     async open() {
-        await super.open(browser.params.appUrl);
+        await allure.createStep('Open main page', async () => {
+            await super.open(browser.params.appUrl);
+        })();
     }
 
     async navigateToLogin() {
-        await this.getLoginBtnElement().click();
+        await allure.createStep('Open login page', async () => {
+            await this.getLoginBtnElement().click();
+        })();
     }
 
     getBaseElement() {
