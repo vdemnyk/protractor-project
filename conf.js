@@ -7,7 +7,7 @@ exports.config = {
     jasmineNodeOpts: {
         defaultTimeoutInterval: 90000
       },
-    specs: ['./spec/loginSpec.js'],
+    specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js'],
     onPrepare: function(){
         console.log('Start of tests execution');
         browser.waitForAngularEnabled(false);
