@@ -19,13 +19,8 @@ describe('Create account:', () => {
       await loginPage.clickCreateAccount();
 
       await registerPage.waitForPageLoaded();
-      await registerPage.typeFirstName('Max');
-      await registerPage.typeLastName('Brown');
-      await registerPage.typePassword('password123');
-      await registerPage.typeAddress('Main street, 235633');
-      await registerPage.typeCity('Tbilisi');
-      await registerPage.selectState();
-      await registerPage.typePostcode('12345');
+      await registerPage.typeNameAndPassword('Max','Brown','password123');
+      await registerPage.typeAddressData('Main street, 235633','Tbilisi','12345');
       await registerPage.typePhone('+00000000');
       await registerPage.clickRegister();
 

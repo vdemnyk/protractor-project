@@ -22,37 +22,28 @@ class RegisterPage extends WebPage {
         super();
     }
 
-    async typeFirstName(firstName) {
-        await this.getFirstNameElement().sendKeys(firstName);
+    async typeNameAndPassword(firstName, lastName, password) {
+        await allure.createStep('Type first name, last name, password', async () => {
+            await this.getFirstNameElement().sendKeys(firstName);
+            await this.getLastNameElement().sendKeys(lastName);
+            await this.getPasswordElement().sendKeys(password);
+        })();
     }
 
-    async typeLastName(lastName) {
-        await this.getLastNameElement().sendKeys(lastName);
-    }
-
-    async typePassword(password) {
-        await this.getPasswordElement().sendKeys(password);
-    }
-
-    async typeAddress(address) {
-        await this.getAddressElement().sendKeys(address);
-    }
-
-    async typeCity(city) {
-        await this.getCityElement().sendKeys(city);
-    }
-
-    async selectState() {
-        await this.getStateDropdownElement().click();
-        await this.getStateItemElement().click();
-    }
-
-    async typePostcode(postcode) {
-        await this.getPostcodeElement().sendKeys(postcode);
+    async typeAddressData(address, city, postcode) {
+        await allure.createStep('Type address, city, postcode; select state', async () => {
+            await this.getAddressElement().sendKeys(address);
+            await this.getCityElement().sendKeys(city);
+            await this.getStateDropdownElement().click();
+            await this.getStateItemElement().click();
+            await this.getPostcodeElement().sendKeys(postcode);
+        })();
     }
 
     async typePhone(phone) {
-        await this.getPhoneElement().sendKeys(phone);
+        await allure.createStep('Type phone number', async () => {
+            await this.getPhoneElement().sendKeys(phone);
+        })();
     }
 
     async clickRegister() {

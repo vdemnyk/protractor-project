@@ -47,7 +47,9 @@ class LoginPage extends WebPage {
     }
 
     async typeEmailSignup(email) {
-        await this.getEmailSignupFieldElement().sendKeys(email);
+        await allure.createStep(`Type email: ${email}`, async () => {
+            await this.getEmailSignupFieldElement().sendKeys(email);
+        })();
     }
 
     async clickCreateAccount() {
