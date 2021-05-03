@@ -23,7 +23,7 @@ class RegisterPage extends WebPage {
     }
 
     async typeNameAndPassword(firstName, lastName, password) {
-        await allure.createStep('Type first name, last name, password', async () => {
+        await allure.createStep(`Type ${firstName}, ${lastName}, ${password}`, async () => {
             await this.getFirstNameElement().sendKeys(firstName);
             await this.getLastNameElement().sendKeys(lastName);
             await this.getPasswordElement().sendKeys(password);
@@ -31,7 +31,7 @@ class RegisterPage extends WebPage {
     }
 
     async typeAddressData(address, city, postcode) {
-        await allure.createStep('Type address, city, postcode; select state', async () => {
+        await allure.createStep(`Type ${address}, ${city}, ${postcode}; select state`, async () => {
             await this.getAddressElement().sendKeys(address);
             await this.getCityElement().sendKeys(city);
             await this.getStateDropdownElement().click();
@@ -41,7 +41,7 @@ class RegisterPage extends WebPage {
     }
 
     async typePhone(phone) {
-        await allure.createStep('Type phone number', async () => {
+        await allure.createStep(`Type ${phone}`, async () => {
             await this.getPhoneElement().sendKeys(phone);
         })();
     }

@@ -19,7 +19,7 @@ class LoginPage extends WebPage {
     }
 
     async login(email, password) {
-        await allure.createStep('Type email and password, click "Sign in" button', async () => {
+        await allure.createStep(`Type ${email} and ${password}, click "Sign in" button`, async () => {
             await this.typeEmail(email);
             await this.typePassword(password);
             await this.clickSignIn();
