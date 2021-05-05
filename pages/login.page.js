@@ -11,6 +11,7 @@ let signinBtnLocator = by.css('#SubmitLogin');
 let alertLocator = by.css('#center_column>.alert');
 let emailSignupFieldLocator = by.css('#email_create');
 let createAccountBtnLocator = by.css('#SubmitCreate');
+let alertSignupLocator = by.css('#create_account_error>ol>li');
 
 
 class LoginPage extends WebPage {
@@ -58,6 +59,20 @@ class LoginPage extends WebPage {
         })();  
     }
 
+    async alertSignupIsVisible() {
+        return await this.getAlertSignupBlock().isDisplayed(); 
+    }
+
+    async checkAlertSignupText() {
+        return await this.getAlertSignupBlock().getText();
+    }
+
+    async clearEmailSignup() {
+        await allure.createStep('Clear "Email address" field', async () => {
+            return await this.getEmailSignupFieldElement().clear();
+        })();
+    }
+
     getBaseElement() {
         return new WebView(element(baseElementLocator), "LoginPage Base");
     }
@@ -84,6 +99,10 @@ class LoginPage extends WebPage {
 
     getCreateAccountElement() {
         return new WebButton(element(createAccountBtnLocator), "Create an account button")
+    }
+
+    getAlertSignupBlock() {
+        return new WebView(element(alertSignupLocator), "Alert (registered email) element");
     }
 }
 

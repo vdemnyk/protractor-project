@@ -15,6 +15,7 @@ let stateItemLocator = by.css('#id_state [value="10"]');
 let postcodeFieldLocator = by.css('#postcode');
 let phoneFieldLocator = by.css('#phone_mobile');
 let registerBtnLocator = by.css('#submitAccount');
+let alertPostcodeLocator = by.css('.alert');
 
 
 class RegisterPage extends WebPage {
@@ -50,6 +51,14 @@ class RegisterPage extends WebPage {
         await allure.createStep('Click "Register" button', async () => {
             await this.getRegisterElement().click();
         })();
+    }
+
+    async alertPostcodeIsVisible() {
+        return await this.getAlertPostcodeBlock().isDisplayed(); 
+    }
+
+    async checkAlertPostcodeText() {
+        return await this.getAlertPostcodeBlock().getText();
     }
 
     getBaseElement() {
@@ -94,6 +103,10 @@ class RegisterPage extends WebPage {
 
     getRegisterElement() {
         return new WebButton(element(registerBtnLocator), "Register button");
+    }
+
+    getAlertPostcodeBlock() {
+        return new WebView(element(alertPostcodeLocator), "Alert (postcode) element");
     }
 }
 
