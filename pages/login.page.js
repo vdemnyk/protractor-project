@@ -60,6 +60,8 @@ class LoginPage extends WebPage {
     }
 
     async alertSignupIsVisible() {
+        let ec = await browser.ExpectedConditions;
+        await browser.wait(ec.visibilityOf($('#create_account_error>ol>li')), 4000); 
         return await this.getAlertSignupBlock().isDisplayed(); 
     }
 

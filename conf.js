@@ -10,20 +10,19 @@ exports.config = {
     specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js'],
     onPrepare: function(){
         console.log('Start of tests execution');
-        browser.waitForAngularEnabled(false);
         browser.manage().timeouts().implicitlyWait(4000);
         let AllureReporter = require('jasmine-allure-reporter');
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results'
         }));
-        jasmine.getEnv().afterEach(function(done){
-            browser.takeScreenshot().then(function (png) {
-              allure.createAttachment('Screenshot', function () {
-                return new Buffer(png, 'base64')
-              }, 'image/png')();
-              done();
-            });
-        });
+        beforeEach(function(){       
+            browser.waitForAngularEnabled(false);      
+        }); 
+        jasmine.getEnv().afterEach(async function(){ 
+            const png = await browser.takeScreenshot(); 
+            allure.createAttachment('screenshot', Buffer.from(png,'base64'),'image/png'); 
+            await browser.restart(); 
+        }); 
     },
     params: {
         appUrl: 'http://automationpractice.com/index.php',

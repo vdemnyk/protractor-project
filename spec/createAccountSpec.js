@@ -25,8 +25,5 @@ describe('Create account:', () => {
       await registerPage.clickRegister();
 
       await accountPage.waitForPageLoaded();
-      await accountPage.logout();
-
-      await loginPage.waitForPageLoaded();
     });
 });

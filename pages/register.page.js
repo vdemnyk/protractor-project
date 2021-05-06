@@ -35,6 +35,8 @@ class RegisterPage extends WebPage {
         await allure.createStep(`Type ${address}, ${city}, ${postcode}; select state`, async () => {
             await this.getAddressElement().sendKeys(address);
             await this.getCityElement().sendKeys(city);
+            let ec = await browser.ExpectedConditions;
+            await browser.wait(ec.visibilityOf($('#uniform-id_state')), 4000); 
             await this.getStateDropdownElement().click();
             await this.getStateItemElement().click();
             await this.getPostcodeElement().sendKeys(postcode);
