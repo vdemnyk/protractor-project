@@ -17,7 +17,10 @@ class WebElement {
         return await this.protractorElement.isDisplayed();
     }
 
-
+    async waitForVisible(time = 15000){
+        let ec = protractor.ExpectedConditions;
+        await browser.wait(ec.visibilityOf(this.protractorElement), time); 
+    }
 }
 
 module.exports = WebElement;

@@ -10,7 +10,7 @@ let lastNameFieldLocator = by.css('#customer_lastname');
 let passwordFieldLocator = by.css('#passwd');
 let addressFieldLocator = by.css('#address1');
 let cityFieldLocator = by.css('#city');
-let stateDropdownLocator = by.css('#id_state');
+let stateDropdownLocator = by.css('#uniform-id_state');
 let stateItemLocator = by.css('#id_state [value="10"]');
 let postcodeFieldLocator = by.css('#postcode');
 let phoneFieldLocator = by.css('#phone_mobile');
@@ -35,8 +35,7 @@ class RegisterPage extends WebPage {
         await allure.createStep(`Type ${address}, ${city}, ${postcode}; select state`, async () => {
             await this.getAddressElement().sendKeys(address);
             await this.getCityElement().sendKeys(city);
-            let ec = await browser.ExpectedConditions;
-            await browser.wait(ec.visibilityOf($('#uniform-id_state')), 4000); 
+            await this.getStateDropdownElement().waitForVisible();
             await this.getStateDropdownElement().click();
             await this.getStateItemElement().click();
             await this.getPostcodeElement().sendKeys(postcode);
