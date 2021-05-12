@@ -12,7 +12,7 @@ describe('Search functionality:', () => {
     expect(await searchPage.resultIsVisible()).toBe(true);
     expect(await searchPage.checkResultNumber()).toBeGreaterThan(0);
     expect(await searchPage.checkResultText()).toContain('results have been found.');
-    await searchPage.clickOnProduct();
+    await searchPage.clickOnProduct(1);
 
     await productPage.waitForPageLoaded();
     expect(await productPage.checkProductName()).toContain('Dress');

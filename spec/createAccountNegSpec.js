@@ -24,7 +24,7 @@ describe('Create account:', () => {
 
       await registerPage.waitForPageLoaded();
       await registerPage.typeNameAndPassword('Max','Brown','password123');
-      await registerPage.typeAddressData('Main street, 235633','Tbilisi','12345678901234');
+      await registerPage.typeAddressData('Main street, 235633','Tbilisi','12345678901234','Georgia');
       await registerPage.typePhone('+00000000');
       await registerPage.clickRegister();
       expect(await registerPage.alertPostcodeIsVisible()).toBe(true);

@@ -5,7 +5,6 @@ let { WebButton } = require("../elemnets/button");
 
 let baseElementLocator = by.css('.product-listing');
 let resultLocator = by.css('.heading-counter');
-let productLocator = by.css('ul.product_list>:first-child .product-name');
 
 
 class SearchPage extends WebPage {
@@ -23,14 +22,13 @@ class SearchPage extends WebPage {
     }
     
     async checkResultNumber() {
-        let text = await this.getResultElement().getText();
-        let number = text[0];
-        return number;
+        return parseInt(await this.getResultElement().getText());
     }
 
-    async clickOnProduct() {
-        await allure.createStep('Click on the first product in the list', async () => {
-            await this.getProductElement().click();
+    async clickOnProduct(listItem) {
+        await allure.createStep(`Click on the product #${listItem} in the list`, async () => {
+            let productLocator = by.css(`ul.product_list>:nth-of-type(${listItem}) .product-name`);
+            return await new WebButton(element(productLocator), `Product #${listItem}`).click();
         })();
     }
 
@@ -40,10 +38,6 @@ class SearchPage extends WebPage {
 
     getResultElement() {
         return new WebView(element(resultLocator), "Result counter");
-    }
-
-    getProductElement() {
-        return new WebButton(element(productLocator), "First product");
     }
 }
 

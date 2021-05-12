@@ -3,6 +3,7 @@ let WebPage = require("../base/webPage");
 let { WebButton } = require("../elemnets/button");
 let { WebTextInput } = require("../elemnets/textInput");
 let { WebView } = require("../elemnets/view");
+let { WebSelect } = require("../elemnets/select");
 
 let baseElementLocator = by.css('#account-creation_form');
 let firstNameFieldLocator = by.css('#customer_firstname');
@@ -11,7 +12,6 @@ let passwordFieldLocator = by.css('#passwd');
 let addressFieldLocator = by.css('#address1');
 let cityFieldLocator = by.css('#city');
 let stateDropdownLocator = by.css('#uniform-id_state');
-let stateItemLocator = by.css('#id_state [value="10"]');
 let postcodeFieldLocator = by.css('#postcode');
 let phoneFieldLocator = by.css('#phone_mobile');
 let registerBtnLocator = by.css('#submitAccount');
@@ -31,13 +31,12 @@ class RegisterPage extends WebPage {
         })();
     }
 
-    async typeAddressData(address, city, postcode) {
+    async typeAddressData(address, city, postcode, state) {
         await allure.createStep(`Type ${address}, ${city}, ${postcode}; select state`, async () => {
             await this.getAddressElement().sendKeys(address);
             await this.getCityElement().sendKeys(city);
             await this.getStateDropdownElement().waitForVisible();
-            await this.getStateDropdownElement().click();
-            await this.getStateItemElement().click();
+            await this.getStateDropdownElement().selectOption(state);
             await this.getPostcodeElement().sendKeys(postcode);
         })();
     }
@@ -87,11 +86,7 @@ class RegisterPage extends WebPage {
     }
 
     getStateDropdownElement() {
-        return new WebButton(element(stateDropdownLocator), "State dropdown");
-    }
-
-    getStateItemElement() {
-        return new WebButton(element(stateItemLocator), "State item");
+        return new WebSelect(element(stateDropdownLocator), "State dropdown");
     }
 
     getPostcodeElement() {
