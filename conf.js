@@ -7,7 +7,7 @@ exports.config = {
     jasmineNodeOpts: {
         defaultTimeoutInterval: 90000
       },
-    specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js'],
+    specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js','./spec/searchSpec.js'],
     onPrepare: function(){
         console.log('Start of tests execution');
         let AllureReporter = require('jasmine-allure-reporter');
