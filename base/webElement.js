@@ -21,6 +21,16 @@ class WebElement {
         let ec = protractor.ExpectedConditions;
         await browser.wait(ec.visibilityOf(this.protractorElement), time); 
     }
+
+    async mouseMove() {
+        await browser.actions().mouseMove(this.protractorElement).perform();
+    }
+
+    async isPresent() {
+        return await this.protractorElement.isPresent();
+    }
+
+
 }
 
 module.exports = WebElement;
