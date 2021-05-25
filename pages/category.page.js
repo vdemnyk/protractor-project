@@ -28,7 +28,7 @@ class CategoryPage extends WebPage {
     }
 
     async cartModalWindowIsOpened() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getCartModalWindowElement().protractorElement), 20000);
+        await this.getCartModalWindowElement().waitForVisible(20000);
     }
 
     async clickCheckout() {

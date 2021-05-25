@@ -6,7 +6,7 @@ let { WebTextInput } = require("../elemnets/textInput");
 
 let baseElementLocator = by.css('#cart_title');
 let quantityFieldLocator = by.css('.cart_quantity_input');
-let quantityValueLocator = by.css('.cart_quantity [value="2"]');
+let quantityValueLocator = by.css('.cart_quantity :first-child[value="2"]');
 let checkoutButtonLocator = by.css('.cart_navigation [title="Proceed to checkout"]');
 let checkoutButtonLocator2 = by.css('[name="processAddress"]');
 
@@ -24,6 +24,7 @@ class CartPage extends WebPage {
     }
 
     async checkQuantity() {
+        await this.getQuantityValueElement().waitForPresent();
         return await this.getQuantityValueElement().isPresent();
     }
 

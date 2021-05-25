@@ -1,8 +1,8 @@
 let WebPage = require("../base/webPage");
 
 let { WebView } = require("../elemnets/view");
-let { WebTextInput } = require("../elemnets/textInput");
 let { WebButton } = require("../elemnets/button");
+let { WebCheckbox } = require("../elemnets/checkbox");
 
 let baseElementLocator = by.css('#carrier_area');
 let termsCheckboxLocator = by.css('#cgv');
@@ -20,6 +20,12 @@ class ShippingPage extends WebPage {
         })();   
     }
 
+    async unCheckTermsCheckbox() {
+        await allure.createStep('Uncheck terms of service checkbox', async () => {
+            await this.getTermsCheckboxElement().uncheck();
+        })();   
+    }
+
     async clickCheckout() {
         await allure.createStep('Click on "Proceed to checkout" button', async () => {
             await this.getCheckoutElement().click();
@@ -31,7 +37,7 @@ class ShippingPage extends WebPage {
     }
 
     getTermsCheckboxElement() {
-        return new WebTextInput(element(termsCheckboxLocator), "Terms of service Checkbox");
+        return new WebCheckbox(element(termsCheckboxLocator), "Terms of service Checkbox");
     }
 
     getCheckoutElement() {

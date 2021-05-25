@@ -20,7 +20,7 @@ class AccountPage extends WebPage {
     }
 
     async hoverTab(tab) {
-        await this.getTabLocator(tab).mouseMove();
+        await this.getTabLocator(tab).mouseHover();
     }
 
     async clickTshirtLink() {

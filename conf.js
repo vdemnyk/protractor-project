@@ -5,7 +5,7 @@ exports.config = {
         browserName: 'chrome'
     },
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 90000
+        defaultTimeoutInterval: 300000
       },
     specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js','./spec/searchSpec.js', './spec/addToCartSpec.js'],
     onPrepare: function(){

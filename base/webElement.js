@@ -22,7 +22,7 @@ class WebElement {
         await browser.wait(ec.visibilityOf(this.protractorElement), time); 
     }
 
-    async mouseMove() {
+    async mouseHover() {
         await browser.actions().mouseMove(this.protractorElement).perform();
     }
 
@@ -30,7 +30,10 @@ class WebElement {
         return await this.protractorElement.isPresent();
     }
 
-
+    async waitForPresent(time = 15000) {
+        let ec = protractor.ExpectedConditions;
+        await browser.wait(ec.presenceOf(this.protractorElement), time);
+    }
 }
 
 module.exports = WebElement;

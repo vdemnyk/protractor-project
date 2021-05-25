@@ -34,6 +34,8 @@ describe('Add to cart and buy functionalities:', () => {
 
     await shippingPage.waitForPageLoaded();
     await shippingPage.checkTermsCheckbox();
+    await shippingPage.unCheckTermsCheckbox();
+    await shippingPage.checkTermsCheckbox();
     await shippingPage.clickCheckout();
 
     await paymentPage.waitForPageLoaded();
