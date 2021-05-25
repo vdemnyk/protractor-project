@@ -24,7 +24,6 @@ class CartPage extends WebPage {
     }
 
     async checkQuantity() {
-        await this.getQuantityValueElement().waitForPresent();
         return await this.getQuantityValueElement().isPresent();
     }
 

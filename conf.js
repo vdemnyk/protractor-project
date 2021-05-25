@@ -16,7 +16,7 @@ exports.config = {
         }));
         beforeEach(function(){       
             browser.waitForAngularEnabled(false);  
-            browser.manage().timeouts().implicitlyWait(4000);
+            browser.manage().timeouts().implicitlyWait(15000);
             browser.driver.manage().window().maximize();    
         }); 
         jasmine.getEnv().afterEach(async function(){ 
