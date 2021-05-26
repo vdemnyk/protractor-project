@@ -5,9 +5,9 @@ exports.config = {
         browserName: 'chrome'
     },
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 90000
+        defaultTimeoutInterval: 300000
       },
-    specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js','./spec/searchSpec.js'],
+    specs: ['./spec/loginSpec.js','./spec/createAccountSpec.js','./spec/createAccountNegSpec.js','./spec/searchSpec.js', './spec/addToCartSpec.js'],
     onPrepare: function(){
         console.log('Start of tests execution');
         let AllureReporter = require('jasmine-allure-reporter');
@@ -16,7 +16,7 @@ exports.config = {
         }));
         beforeEach(function(){       
             browser.waitForAngularEnabled(false);  
-            browser.manage().timeouts().implicitlyWait(4000);
+            browser.manage().timeouts().implicitlyWait(15000);
             browser.driver.manage().window().maximize();    
         }); 
         jasmine.getEnv().afterEach(async function(){ 
