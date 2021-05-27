@@ -34,6 +34,10 @@ class WebElement {
         let ec = protractor.ExpectedConditions;
         await browser.wait(ec.presenceOf(this.protractorElement), time);
     }
+
+    async count() {
+        return await this.protractorElement.count();
+    }
 }
 
 module.exports = WebElement;
