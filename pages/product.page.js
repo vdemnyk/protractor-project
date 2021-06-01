@@ -1,6 +1,6 @@
 let WebPage = require("../base/webPage");
 
-let { WebView } = require("../elemnets/view");
+let { WebView } = require("../elements/view");
 
 let baseElementLocator = by.css('#buy_block');
 let productNameLocator = by.css('[itemprop="name"]');

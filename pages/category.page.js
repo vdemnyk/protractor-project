@@ -1,7 +1,7 @@
 let WebPage = require("../base/webPage");
 
-let { WebButton } = require("../elemnets/button");
-let { WebView } = require("../elemnets/view");
+let { WebButton } = require("../elements/button");
+let { WebView } = require("../elements/view");
 
 let baseElementLocator = by.css('.content_scene_cat');
 let listButtonLocator = by.css('#list');

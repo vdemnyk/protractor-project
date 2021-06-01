@@ -1,8 +1,8 @@
 let WebPage = require("../base/webPage");
 
-let { WebButton } = require("../elemnets/button");
-let { WebTextInput } = require("../elemnets/textInput");
-let { WebView } = require("../elemnets/view");
+let { WebButton } = require("../elements/button");
+let { WebTextInput } = require("../elements/textInput");
+let { WebView } = require("../elements/view");
 
 let baseElementLocator = by.css('#login_form');
 let emailFieldLocator = by.css('#email');

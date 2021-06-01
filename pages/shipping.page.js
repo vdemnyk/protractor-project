@@ -1,8 +1,8 @@
 let WebPage = require("../base/webPage");
 
-let { WebView } = require("../elemnets/view");
-let { WebButton } = require("../elemnets/button");
-let { WebCheckbox } = require("../elemnets/checkbox");
+let { WebView } = require("../elements/view");
+let { WebButton } = require("../elements/button");
+let { WebCheckbox } = require("../elements/checkbox");
 
 let baseElementLocator = by.css('#carrier_area');
 let termsCheckboxLocator = by.css('#cgv');
