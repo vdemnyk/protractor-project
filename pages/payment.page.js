@@ -1,7 +1,7 @@
 let WebPage = require("../base/webPage");
 
-let { WebView } = require("../elemnets/view");
-let { WebButton } = require("../elemnets/button");
+let { WebView } = require("../elements/view");
+let { WebButton } = require("../elements/button");
 
 let baseElementLocator = by.css('#HOOK_PAYMENT');
 let payByCheckButtonLocator = by.css('.cheque');

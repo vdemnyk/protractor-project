@@ -1,6 +1,6 @@
 let WebElement = require("../base/webElement");
 
-let { WebButton }  = require("../elemnets/button");
+let { WebButton }  = require("../elements/button");
 
 
 class WebSelect extends WebElement {

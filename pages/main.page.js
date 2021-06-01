@@ -1,8 +1,8 @@
 let WebPage = require("../base/webPage");
 
-let { WebButton } = require("../elemnets/button");
-let { WebView } = require("../elemnets/view");
-let { WebTextInput } = require("../elemnets/textInput");
+let { WebButton } = require("../elements/button");
+let { WebView } = require("../elements/view");
+let { WebTextInput } = require("../elements/textInput");
 
 let baseElementLocator = by.css('#homeslider');
 let loginBtnLocator = by.css('.login');
@@ -17,6 +17,7 @@ let cartPopupLocator = by.css('div.cart_block[style*="display: block"]');
 let productQuantityLocator = by.css('.products>dt');
 let firstItemCrossLocator = by.css('.first_item .remove_link');
 let cartQuantityLocator = by.css('a>.ajax_cart_quantity');
+let contactUsLinkLocator = by.css('ul>li>[title="Contact us"]');
 
 
 class MainPage extends WebPage {
@@ -82,6 +83,12 @@ class MainPage extends WebPage {
         return await this.getCartQuantityElement().getText();
     }
 
+    async clickContactUs() {
+        await allure.createStep('Click on "Contact Us" link', async () => {
+            await this.getContactUsLinkElement().click();
+        })();
+    }
+
     getBaseElement() {
         return new WebView(element(baseElementLocator), "MainPage Base");
     }
@@ -140,6 +147,10 @@ class MainPage extends WebPage {
 
     getCartQuantityElement() {
         return new WebView(element(cartQuantityLocator), "Product quantity on Cart block");
+    }
+
+    getContactUsLinkElement() {
+        return new WebButton(element(contactUsLinkLocator), "Contact Us Link");
     }
 }
 

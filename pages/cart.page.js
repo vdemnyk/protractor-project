@@ -1,8 +1,8 @@
 let WebPage = require("../base/webPage");
 
-let { WebButton } = require("../elemnets/button");
-let { WebView } = require("../elemnets/view");
-let { WebTextInput } = require("../elemnets/textInput");
+let { WebButton } = require("../elements/button");
+let { WebView } = require("../elements/view");
+let { WebTextInput } = require("../elements/textInput");
 
 let baseElementLocator = by.css('#cart_title');
 let quantityFieldLocator = by.css('.cart_quantity_input');

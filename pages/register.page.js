@@ -1,9 +1,9 @@
 let WebPage = require("../base/webPage");
 
-let { WebButton } = require("../elemnets/button");
-let { WebTextInput } = require("../elemnets/textInput");
-let { WebView } = require("../elemnets/view");
-let { WebSelect } = require("../elemnets/select");
+let { WebButton } = require("../elements/button");
+let { WebTextInput } = require("../elements/textInput");
+let { WebView } = require("../elements/view");
+let { WebSelect } = require("../elements/select");
 
 let baseElementLocator = by.css('#account-creation_form');
 let firstNameFieldLocator = by.css('#customer_firstname');
