@@ -2,7 +2,7 @@ const mainPage = require('../pages/main.page');
 const loginPage = require('../pages/login.page');
 const accountPage = require('../pages/account.page');
 
-describe('Login functionality:', () => {
+describe('Verification of login functionality:', () => {
   it('Successful login', async () => {
     await mainPage.open();
     await mainPage.waitForPageLoaded();
@@ -11,6 +11,7 @@ describe('Login functionality:', () => {
     await loginPage.waitForPageLoaded();
     await loginPage.login(browser.params.email, browser.params.password);
 
+    // State Transition
     await accountPage.waitForPageLoaded();
     await accountPage.logout();
 

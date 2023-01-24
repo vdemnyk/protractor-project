@@ -31,6 +31,12 @@ class RegisterPage extends WebPage {
         })();
     }
 
+    async typePostcode(postcode) {
+        await allure.createStep(`Type postcode: ${postcode}`, async () => {
+            await this.getPostcodeElement().sendKeys(postcode);
+        });
+    }
+
     async typeAddressData(address, city, postcode, state) {
         await allure.createStep(`Type ${address}, ${city}, ${postcode}; select state`, async () => {
             await this.getAddressElement().sendKeys(address);
